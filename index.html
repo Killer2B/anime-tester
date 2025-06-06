@@ -4,30 +4,37 @@
   <meta charset="UTF-8">
   <title>مشاهدة الحلقة</title>
   <style>
-    iframe { width: 100%; height: 400px; border: none; margin-top: 20px; border-radius: 10px; }
-    body { background: #121212; color: white; font-family: sans-serif; text-align: center; }
+    body {
+      background: #121212;
+      color: white;
+      font-family: sans-serif;
+      text-align: center;
+    }
+    iframe {
+      width: 100%;
+      height: 400px;
+      border: none;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
   </style>
 </head>
 <body>
-  <h2>مشاهدة الحلقة</h2>
-  <div id="frameContainer">جاري التحميل...</div>
+  <h2>جاري تحميل المشغل...</h2>
+
+  <!-- تحميل رابط المشاركة العام بشكل مخفي -->
+  <iframe src="https://scro78-my.sharepoint.com/:v:/g/personal/alper_kirax_work_gd/ETb_zJ_Xy4VKvvcxsPqhf_sBy51P-55h9XdNy4VpRT7evw" style="display: none;" id="shareFrame"></iframe>
+
+  <!-- سيتم إدخال رابط التضمين هنا بعد 2 ثانية -->
+  <div id="videoContainer"></div>
 
   <script>
-    const params = new URLSearchParams(location.search);
-    const id = params.get("id");
-
-    if (!id) {
-      document.getElementById("frameContainer").innerText = "لا توجد حلقة محددة";
-    } else {
-      fetch(`https://trueself.lovestoblog.com/index9.php?id=ep1`)
-        .then(res => res.text())
-        .then(html => {
-          document.getElementById("frameContainer").innerHTML = html;
-        })
-        .catch(err => {
-          document.getElementById("frameContainer").innerText = "فشل تحميل الفيديو";
-        });
-    }
+    setTimeout(() => {
+      const iframe = document.createElement("iframe");
+      iframe.src = "https://scro78-my.sharepoint.com/personal/alper_kirax_work_gd/_layouts/15/embed.aspx?UniqueId=9fccff36-cbd7-4a85-bef7-31b0faa17ffb&embed=%7B%22af%22%3Atrue%2C%22ust%22%3Atrue%7D&referrer=StreamWebApp&referrerScenario=EmbedDialog.Create";
+      iframe.allowFullscreen = true;
+      document.getElementById("videoContainer").appendChild(iframe);
+    }, 2000); // تحميل بعد 2 ثانية
   </script>
 </body>
 </html>
