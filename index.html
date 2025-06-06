@@ -19,7 +19,7 @@
     if (!id) {
       document.getElementById("frameContainer").innerText = "لا توجد حلقة محددة";
     } else {
-      fetch(`https://dpro.rf.gd/watch.php?id=${id}`)
+      fetch(`https://dpro.rf.gd/watch.php?id=ep1`)
         .then(res => res.text())
         .then(html => {
           document.getElementById("frameContainer").innerHTML = html;
